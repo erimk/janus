@@ -44,7 +44,8 @@ defmodule Janus.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.2"}
+      {:bandit, "~> 1.2"},
+      {:ex_machina, "~> 2.8.0", only: :test}
     ]
   end
 
@@ -59,7 +60,7 @@ defmodule Janus.MixProject do
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+      test: ["ecto.drop", "ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end
 end
