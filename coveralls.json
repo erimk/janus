@@ -1,0 +1,15 @@
+{
+  "coverage_options": {
+      "treat_no_relevant_lines_as_covered": true,
+      "minimum_coverage": 75.0
+  },
+  "terminal_options": {
+      "print_files": false
+  },
+  "skip_files": [
+      "deps",
+      "test",
+      "lib/janus_web/telemetry.ex",
+      "lib/janus/application.ex"
+  ]
+}
