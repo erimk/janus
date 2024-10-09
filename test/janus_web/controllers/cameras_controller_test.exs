@@ -11,7 +11,7 @@ defmodule JanusWeb.CamerasControllerTest do
 
       conn =
         build_conn()
-        |> get(~p"/api/cameras")
+        |> get("/api/cameras")
 
       assert [subject] = json_response(conn, 200)["data"]["users"]
       assert subject["id"] == user.id
@@ -33,12 +33,3 @@ defmodule JanusWeb.CamerasControllerTest do
 
   # end
 end
-
-# Cada usuário deve retornar seu nome e suas câmeras ativas.
-# Alguns usuários podem ter sido desligados (a funcionalidade de desligamento deve ser considerada fora do escopo deste exercício), então só nesse caso é possível que todas as câmeras pertencentes a um usuário estejam inativas. Nestes casos, o endpoint deve retornar a data em que o usuário foi desligado.
-# Este endpoint deve suportar filtragem por parte do nome da câmera e ordenação pelo nome da camera.
-# Endpoint: GET /cameras
-
-# TABELA: id, user_name, user_active
-# - Cada câmeras deve ter uma marca.
-# TABELA: id, user_id, camera_name, camera_brand, camera_state

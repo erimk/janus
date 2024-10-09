@@ -20,7 +20,12 @@ defmodule Janus.AccountTest do
     end
 
     test "create_user/1 with valid data creates a user" do
-      valid_attrs = %{actived: true, deactivated_at: ~U[2024-10-08 09:46:00Z], email: "some email", name: "some name"}
+      valid_attrs = %{
+        actived: true,
+        deactivated_at: ~U[2024-10-08 09:46:00Z],
+        email: "some email",
+        name: "some name"
+      }
 
       assert {:ok, %User{} = user} = Account.create_user(valid_attrs)
       assert user.actived == true
@@ -35,7 +40,13 @@ defmodule Janus.AccountTest do
 
     test "update_user/2 with valid data updates the user" do
       user = insert(:user)
-      update_attrs = %{actived: false, deactivated_at: ~U[2024-10-09 09:46:00Z], email: "some updated email", name: "some updated name"}
+
+      update_attrs = %{
+        actived: false,
+        deactivated_at: ~U[2024-10-09 09:46:00Z],
+        email: "some updated email",
+        name: "some updated name"
+      }
 
       assert {:ok, %User{} = user} = Account.update_user(user, update_attrs)
       assert user.actived == false

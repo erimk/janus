@@ -65,4 +65,3 @@ Não esperamos que você implemente autenticação e autorização, mas sua solu
 ## Detalhes da Implementação
 
 Essa seção é para você preencher com quaisquer decisões que tomou que podem ser relevantes. Você também pode mudar esse README para atender suas necessidades.
-

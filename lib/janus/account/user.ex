@@ -1,9 +1,12 @@
 defmodule Janus.Account.User do
+  @moduledoc """
+    WIP
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "users" do
-    field :actived, :boolean, default: false
+    field :actived, :boolean, default: true
     field :deactivated_at, :utc_datetime
     field :email, :string
     field :name, :string

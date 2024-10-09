@@ -9,4 +9,11 @@ defmodule Janus.Factory do
       email: sequence(:email, &"algo_#{&1}@mail.com")
     }
   end
+
+  def camera_factory do
+    %Janus.Surveillance.Camera{
+      name: sequence(:name, &"Camera-#{&1}"),
+      brand: Enum.random([:Intelbras, :Hikvision, :Giga, :Vivotek])
+    }
+  end
 end
