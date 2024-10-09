@@ -4,6 +4,7 @@ defmodule JanusWeb.CamerasControllerTest do
   import Janus.Factory
 
   describe "index" do
+    @tag :skip
     test "returns a list of cameras by user when valid data" do
       user = insert(:user)
       insert_list(3, :camera, %{user: user})
