@@ -3,7 +3,10 @@ defmodule Janus.Account.User do
     WIP
   """
   use Ecto.Schema
+
   import Ecto.Changeset
+
+  alias Janus.Surveillance.Camera
 
   schema "users" do
     field :actived, :boolean, default: true
@@ -11,14 +14,19 @@ defmodule Janus.Account.User do
     field :email, :string
     field :name, :string
 
+    has_many :cameras, Camera
+
     timestamps(type: :utc_datetime)
   end
+
+  @required [:name, :email, :actived]
+  @optional [:deactivated_at]
 
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :email, :actived, :deactivated_at])
-    |> validate_required([:name, :email, :actived, :deactivated_at])
+    |> cast(attrs, @required ++ @optional)
+    |> validate_required(@required)
     |> unique_constraint(:email)
   end
 end

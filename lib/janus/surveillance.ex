@@ -17,8 +17,10 @@ defmodule Janus.Surveillance do
       [%Camera{}, ...]
 
   """
-  def list_cameras do
-    Repo.all(Camera)
+  def list_cameras_with_user do
+    Camera
+    |> preload([:user])
+    |> Repo.all()
   end
 
   @doc """

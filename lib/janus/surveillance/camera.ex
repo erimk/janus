@@ -4,12 +4,17 @@ defmodule Janus.Surveillance.Camera do
   """
 
   use Ecto.Schema
+
   import Ecto.Changeset
 
+  alias Janus.Account.User
+
   schema "cameras" do
-    field :actived, :boolean, default: false
-    field :brand, Ecto.Enum, values: [:Intelbras, :Hikvision, :Giga, :Vivotek]
+    field :actived, :boolean, default: true
+    field :brand, :string
     field :name, :string
+
+    belongs_to :user, User
 
     timestamps(type: :utc_datetime)
   end

@@ -13,7 +13,8 @@ defmodule Janus.Factory do
   def camera_factory do
     %Janus.Surveillance.Camera{
       name: sequence(:name, &"Camera-#{&1}"),
-      brand: Enum.random([:Intelbras, :Hikvision, :Giga, :Vivotek])
+      brand: Enum.random(["Intelbras", "Hikvision", "Giga", "Vivotek"]),
+      user: build(:user)
     }
   end
 end
