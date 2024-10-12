@@ -7,6 +7,8 @@ defmodule JanusWeb.Router do
 
   scope "/api", JanusWeb do
     pipe_through :api
+
+    get "/cameras", CamerasController, :index
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

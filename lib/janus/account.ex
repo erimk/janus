@@ -4,9 +4,10 @@ defmodule Janus.Account do
   """
 
   import Ecto.Query, warn: false
-  alias Janus.Repo
 
   alias Janus.Account.User
+  alias Janus.Repo
+  alias Janus.Surveillance.Camera
 
   @doc """
   Returns the list of users.
@@ -19,6 +20,14 @@ defmodule Janus.Account do
   """
   def list_users do
     Repo.all(User)
+  end
+
+  def list_user_with_cameras do
+    camera_query = Camera |> where([c], c.actived == true)
+
+    User
+    |> preload(cameras: ^camera_query)
+    |> Repo.all()
   end
 
   @doc """
