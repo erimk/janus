@@ -4,7 +4,7 @@ defmodule Janus.Repo.Migrations.CreateCameras do
   def change do
     create table(:cameras) do
       add :name, :string
-      add :actived, :boolean, default: false, null: false
+      add :active, :boolean, default: false, null: false
       add :brand, :string
 
       timestamps(type: :utc_datetime)

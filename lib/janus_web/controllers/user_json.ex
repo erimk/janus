@@ -13,7 +13,7 @@ defmodule JanusWeb.UserJson do
   def data(%User{} = user) do
     %{
       id: user.id,
-      actived: user.actived,
+      active: user.active,
       deactivated_at: user.deactivated_at,
       email: user.email,
       name: user.name,

@@ -7,7 +7,7 @@ defmodule Janus.Account do
 
   alias Janus.Account.User
   alias Janus.Repo
-  alias Janus.Surveillance.Camera
+  alias Janus.Surveillance
 
   @doc """
   Returns the list of users.
@@ -22,11 +22,11 @@ defmodule Janus.Account do
     Repo.all(User)
   end
 
-  def list_user_with_cameras do
-    camera_query = Camera |> where([c], c.actived == true)
-
+  @doc "Returns the list of user with cameras"
+  @spec list_user_with_cameras(map()) :: list()
+  def list_user_with_cameras(params) do
     User
-    |> preload(cameras: ^camera_query)
+    |> preload(cameras: ^Surveillance.preload_camera_query(params))
     |> Repo.all()
   end
 

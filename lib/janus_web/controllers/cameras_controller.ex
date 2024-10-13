@@ -5,9 +5,9 @@ defmodule JanusWeb.CamerasController do
   alias Janus.Account
   use JanusWeb, :controller
 
-  def index(conn, _params) do
+  def index(conn, params) do
     conn
     |> put_view(JanusWeb.UserJson)
-    |> render(:index, users: Account.list_user_with_cameras())
+    |> render(:index, users: Account.list_user_with_cameras(params))
   end
 end

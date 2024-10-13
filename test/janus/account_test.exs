@@ -7,7 +7,7 @@ defmodule Janus.AccountTest do
   alias Janus.Account.User
 
   describe "users" do
-    @invalid_attrs %{actived: nil, deactivated_at: nil, email: nil, name: nil}
+    @invalid_attrs %{active: nil, deactivated_at: nil, email: nil, name: nil}
 
     test "list_users/0 returns all users" do
       user = insert(:user)
@@ -21,14 +21,14 @@ defmodule Janus.AccountTest do
 
     test "create_user/1 with valid data creates a user" do
       valid_attrs = %{
-        actived: true,
+        active: true,
         deactivated_at: ~U[2024-10-08 09:46:00Z],
         email: "some email",
         name: "some name"
       }
 
       assert {:ok, %User{} = user} = Account.create_user(valid_attrs)
-      assert user.actived == true
+      assert user.active == true
       assert user.deactivated_at == ~U[2024-10-08 09:46:00Z]
       assert user.email == "some email"
       assert user.name == "some name"
@@ -42,14 +42,14 @@ defmodule Janus.AccountTest do
       user = insert(:user)
 
       update_attrs = %{
-        actived: false,
+        active: false,
         deactivated_at: ~U[2024-10-09 09:46:00Z],
         email: "some updated email",
         name: "some updated name"
       }
 
       assert {:ok, %User{} = user} = Account.update_user(user, update_attrs)
-      assert user.actived == false
+      assert user.active == false
       assert user.deactivated_at == ~U[2024-10-09 09:46:00Z]
       assert user.email == "some updated email"
       assert user.name == "some updated name"

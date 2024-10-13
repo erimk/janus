@@ -10,7 +10,7 @@ defmodule Janus.Surveillance.Camera do
   alias Janus.Account.User
 
   schema "cameras" do
-    field :actived, :boolean, default: true
+    field :active, :boolean, default: true
     field :brand, :string
     field :name, :string
 
@@ -19,7 +19,7 @@ defmodule Janus.Surveillance.Camera do
     timestamps(type: :utc_datetime)
   end
 
-  @required [:name, :actived, :brand]
+  @required [:name, :active, :brand]
 
   @doc false
   def changeset(camera, attrs) do

@@ -7,16 +7,15 @@ defmodule Janus.SurveillanceTest do
   alias Janus.Surveillance.Camera
 
   describe "cameras" do
-    @invalid_attrs %{actived: nil, brand: nil, name: nil}
+    @invalid_attrs %{active: nil, brand: nil, name: nil}
 
-    test "list_cameras_with_user/0 returns all cameras" do
+    test "list_cameras/0 returns all cameras" do
       camera = insert(:camera)
 
-      assert [subject] = Surveillance.list_cameras_with_user()
+      assert [subject] = Surveillance.list_cameras()
 
       assert subject.id == camera.id
       assert subject.user_id == camera.user_id
-      assert subject.user.name == camera.user.name
     end
 
     test "get_camera!/1 returns the camera with given id" do
@@ -34,10 +33,10 @@ defmodule Janus.SurveillanceTest do
     end
 
     test "create_camera/1 with valid data creates a camera" do
-      valid_attrs = %{actived: true, brand: "Intelbras", name: "some name"}
+      valid_attrs = %{active: true, brand: "Intelbras", name: "some name"}
 
       assert {:ok, %Camera{} = camera} = Surveillance.create_camera(valid_attrs)
-      assert camera.actived == true
+      assert camera.active == true
       assert camera.brand == "Intelbras"
       assert camera.name == "some name"
     end
@@ -48,10 +47,10 @@ defmodule Janus.SurveillanceTest do
 
     test "update_camera/2 with valid data updates the camera" do
       camera = insert(:camera)
-      update_attrs = %{actived: false, brand: "Hikvision", name: "some updated name"}
+      update_attrs = %{active: false, brand: "Hikvision", name: "some updated name"}
 
       assert {:ok, %Camera{} = camera} = Surveillance.update_camera(camera, update_attrs)
-      assert camera.actived == false
+      assert camera.active == false
       assert camera.brand == "Hikvision"
       assert camera.name == "some updated name"
     end

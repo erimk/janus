@@ -8,7 +8,7 @@ defmodule JanusWeb.CameraJson do
   def data(%Camera{} = camera) do
     %{
       id: camera.id,
-      actived: camera.actived,
+      active: camera.active,
       brand: camera.brand,
       name: camera.name
     }

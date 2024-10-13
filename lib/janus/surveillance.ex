@@ -17,10 +17,8 @@ defmodule Janus.Surveillance do
       [%Camera{}, ...]
 
   """
-  def list_cameras_with_user do
-    Camera
-    |> preload([:user])
-    |> Repo.all()
+  def list_cameras do
+    Repo.all(Camera)
   end
 
   @doc """
@@ -119,4 +117,16 @@ defmodule Janus.Surveillance do
   def change_camera(%Camera{} = camera, attrs \\ %{}) do
     Camera.changeset(camera, attrs)
   end
+
+  @doc "Returns a query for preload cameras based on params."
+  @spec preload_camera_query(map()) :: Ecto.Query.t()
+  def preload_camera_query(params) do
+    Camera
+    |> where([c], c.active == true)
+    |> where(^filter_by_name(params["name"]))
+    |> order_by([c], asc: :name)
+  end
+
+  defp filter_by_name(nil), do: true
+  defp filter_by_name(name), do: dynamic([c], ilike(c.name, ^"#{name}%"))
 end
