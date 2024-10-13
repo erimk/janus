@@ -1,6 +1,6 @@
 defmodule JanusWeb.UserJson do
   @moduledoc """
-  WIP
+    Formatter json for users data.
   """
 
   alias Janus.Account.User

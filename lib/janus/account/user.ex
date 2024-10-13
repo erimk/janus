@@ -1,6 +1,6 @@
 defmodule Janus.Account.User do
   @moduledoc """
-    WIP
+    User's model.
   """
   use Ecto.Schema
 

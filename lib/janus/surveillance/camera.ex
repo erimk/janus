@@ -1,6 +1,6 @@
 defmodule Janus.Surveillance.Camera do
   @moduledoc """
-    WIP
+    Camera's module.
   """
 
   use Ecto.Schema

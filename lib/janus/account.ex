@@ -6,6 +6,7 @@ defmodule Janus.Account do
   import Ecto.Query, warn: false
 
   alias Janus.Account.User
+  alias Janus.Mailer
   alias Janus.Repo
   alias Janus.Surveillance
 
@@ -109,5 +110,17 @@ defmodule Janus.Account do
   """
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
+  end
+
+  def get_hikvision_users do
+    User
+    |> preload(cameras: ^Surveillance.preload_hikvision_query())
+    |> Repo.all()
+  end
+
+  def send_notify_user do
+    users = get_hikvision_users()
+
+    Enum.each(users, fn user -> user |> Mailer.create_notify_user() |> Mailer.deliver() end)
   end
 end

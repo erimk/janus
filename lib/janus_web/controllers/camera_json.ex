@@ -1,6 +1,6 @@
 defmodule JanusWeb.CameraJson do
   @moduledoc """
-  WIP
+   Formatter json for cameras data.
   """
 
   alias Janus.Surveillance.Camera

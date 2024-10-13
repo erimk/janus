@@ -129,4 +129,11 @@ defmodule Janus.Surveillance do
 
   defp filter_by_name(nil), do: true
   defp filter_by_name(name), do: dynamic([c], ilike(c.name, ^"#{name}%"))
+
+  @doc "Returns a query for preload Hikvision's cameras."
+  @spec preload_hikvision_query :: Ecto.Query.t()
+  def preload_hikvision_query do
+    Camera
+    |> where([c], c.brand == "Hikvision")
+  end
 end
