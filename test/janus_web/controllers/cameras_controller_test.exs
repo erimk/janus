@@ -40,7 +40,15 @@ defmodule JanusWeb.CamerasControllerTest do
     assert subject_b["name"] == camera_a.name
   end
 
-  # test "returns no camera when user and camera deactivated" do
+  test "returns no camera when user and camera deactivated" do
+    user = insert(:user, %{deactivated_at: ~U[2024-10-13 01:38:30Z]})
+    insert(:camera, %{user: user, active: false})
 
-  # end
+    conn =
+      build_conn()
+      |> get("/api/cameras")
+
+    assert [subject] = json_response(conn, 200)["data"]["users"]
+    assert subject["cameras"] == []
+  end
 end
