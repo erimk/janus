@@ -1,6 +1,6 @@
 # Janus
 
-This is a RESTfull API project to manage a system of survailence cameras. Following the proposed [challenge](`desafio.md`).
+This is a RESTfull API project to manage a system of survailence cameras. Following the proposed [challenge](desafio.md).
 
 ## Configuration
 
