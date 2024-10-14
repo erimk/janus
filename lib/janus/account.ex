@@ -115,6 +115,7 @@ defmodule Janus.Account do
   def get_hikvision_users do
     User
     |> preload(cameras: ^Surveillance.preload_hikvision_query())
+    |> where([u], u.active == true)
     |> Repo.all()
   end
 
