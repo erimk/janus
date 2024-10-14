@@ -4,7 +4,7 @@ This is a RESTfull API project to manage a system of survailence cameras. Follow
 
 ## Configuration
 
-- Elixir environment. See more in: [https://elixir-lang.org/install.html]
+- Elixir environment. See more in: [https://elixir-lang.org/install.html]. Or run `asdf install` since the project has a .tool-versions configured.
 - Postgres database.
 
 ## Seeds
